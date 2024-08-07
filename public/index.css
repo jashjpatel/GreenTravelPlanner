@@ -7,16 +7,24 @@
 }
 
 p.slogan{
-    font-size: 5em;
+    font-size: 4.5em;
     font-family: "Arial";
+    font-weight: bold;
 }
 
 p.poweredBy{
-    font-size: 1.5em;
+    margin-top: 20vh;
+    font-size: 1em;
     font-weight: 1500;
 }
 
-.aboutTitle{
+p.followingText{
+    font-size: 1.75em;
+    font-weight: bold;
+    font-family: "Arial";
+}
+
+.about{
     color: rgb(0, 0, 0);
     text-align: center;
     padding: 1em;
@@ -36,7 +44,7 @@ span{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100vh;
+    height: 75vh;
 }
 
 .flex-item {
