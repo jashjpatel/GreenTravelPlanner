@@ -2,7 +2,7 @@
   "name": "green-travel-planner",
   "version": "1.0.0",
   "description": "An Angular.js app to plan your travel and help make your trip eco-friendly",
-  "main": "src/index.js",
+  "main": "public/index.html",
   "scripts": {
   "start": "http-server ./public -a localhost -p 8000",
   "test": "echo \"Error: no test specified\" && exit 1"
