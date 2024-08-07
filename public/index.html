@@ -10,15 +10,27 @@
 </head>
 <body>
     <div ng-controller="header" class="header">
-        <h1 class="gtp">Green Travel Planner </h1>
-        <p class="slogan">Planning a vacation has never been easier</p>
-        <p class = "poweredBy">Powered by Jash Patel<p>
-    </div>
-    <div ng-controller="aboutTheApp">
-        <div class = "aboutTitle">
-            <p>What is the Green Travel Planner?</p>
+        <div class="flexbox">
+
+            <div class="flex-item everythingElse">
+                <p class="slogan">Planning a vacation has never been easier</p>
+                <p class = "poweredBy">Powered by Jash Patel<p>
+            </div>
+
+            <div class="flex-item image">
+                <img src="img/headerBackgroundImage.png" alt="Green Travel Planner Image">
+            </div>
+
         </div>
         
+    </div>
+
+    <div ng-controller="aboutTheApp">
+        <div class = "about">
+            <div class = "aboutTitle">
+                <p>What is the <span> Green Travel Planner</span>?</p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
