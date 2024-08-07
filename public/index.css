@@ -1,10 +1,35 @@
 body {
-    font-family: Arial, sans-serif;
+    font: 'Montserrat';
+}
 
+.header {
+    background-image: url("../img/headerBackgroundImage.jpg");
+    background-color: #daeecc;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 1em;
+}
+
+p.slogan{
+    font-size: 2em;
+    font-weight: 1200;
+}
+
+p.poweredBy{
+    font-size: 1.5em;
+    font-weight: 1500;
+}
+
+.aboutTitle{
+    background-color: white;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 1.5em;
+    font-size: 2em;
 }
 
 .gtp {
-    color: blue;
-    font-size: 2em;
+    font-size: 4em;
     text-align: center;
 }
+   
