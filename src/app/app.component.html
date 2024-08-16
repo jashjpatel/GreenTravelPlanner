@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenTrip Guru</title>
+    <link rel="stylesheet" href="app.component.scss">
+</head>
+<body>
+
+    <div ng-controller="header" class="header">
+
+        
+
+        <div class="flexbox">
+
+            <div class="flex-item everythingElse">
+                <p class="slogan">Planning a vacation has never been easier</p>
+                <p class= "followingText">Not sure where you want to go for your next vacation and what you want to do there? Look no further!</p>
+                <button class = "login" ng-click = "vm.openModal('login')">Login</button>
+                <button class = "signUp" ng-click = "vm.openModal('signup')">Sign Up</button>
+            </div>
+
+            <div class="flex-item image">
+                <img src="img/headerBackgroundImage.png" alt="GreenTrip Guru">
+            </div>
+
+        </div>
+        
+    </div>
+
+    <div ng-controller="aboutTheApp">
+        <div class = "about">
+                <p class = "title">What is  <span> GreenTrip Guru</span>?</p>
+                <p class="description">GreenTrip Guru is a web application that helps you plan your vacation in a sustainable way. It provides you with a list of eco-friendly hotels, restaurants, and activities in the city of your choice while also considering your priorities and reviews of previous vacations. You can also calculate the carbon footprint of your trip and find out how to offset it.</p>
+        </div>
+        <p class = "poweredBy">Powered by Jash Patel<p></p>
+    </div>
+
+    <!-- Creating the modals (one for login and one for signup) -->
+    
+    
+    
+    <script src="./libs/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="modals/login-signup-modal-controller.js"></script>
+</body>
+</html>
