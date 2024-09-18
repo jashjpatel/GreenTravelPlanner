@@ -33,6 +33,7 @@ export function app(): express.Express {
       .render({
         bootstrap,
         documentFilePath: indexHtml,
+        // url for running the server
         url: `${protocol}://${headers.host}${originalUrl}`,
         publicPath: browserDistFolder,
         providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
@@ -46,7 +47,6 @@ export function app(): express.Express {
 
 function run(): void {
   const port = process.env['PORT'] || 4000;
-
   // Start up the Node server
   const server = app();
   server.listen(port, () => {
