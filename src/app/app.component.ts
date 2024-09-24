@@ -1,27 +1,22 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import { LogInPopUpComponent } from './log-in-pop-up/log-in-pop-up.component';
+import { CommonModule } from '@angular/common'; 
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
-  imports: [RouterOutlet, MatDialogModule],
+  imports: [CommonModule],
+  // define a template as an external file 
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'my-angular-app';
-
-  // creating an instance of MatDialog
-  constructor(private dialog: MatDialog) {
-
+  openModal(){
+    const modelDiv = document.getElementById('myModal');
+    if(modelDiv != null){
+      modelDiv.style.display = 'block';
+    }
   }
-  // creating a function to open the dialog
-  openDialog(){
-
-    this.dialog.open(LogInPopUpComponent);
-  }
-
 }
-console.log('Testing 123');
+
+console.log('Testing 12345');

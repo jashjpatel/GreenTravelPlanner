@@ -1,47 +1,73 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="myApp">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GreenTrip Guru</title>
-    <link rel="stylesheet" href="app.component.scss">
-</head>
-<body>
+<div class="header">
+  <div class="flexbox">
+    <div class="flex-item everythingElse">
 
-    <div ng-controller="header" class="header">
+      <p class="slogan">Planning a vacation has never been easier</p>
+      <p class="followingText">Not sure where you want to go for your next vacation and what you want to do there? Look no further!</p>
 
-        
+      <button class="login" (click) = 'openModal()'>Login</button>
+      <button class="signUp">Sign Up</button>
 
-        <div class="flexbox">
-
-            <div class="flex-item everythingElse">
-                <p class="slogan">Planning a vacation has never been easier</p>
-                <p class= "followingText">Not sure where you want to go for your next vacation and what you want to do there? Look no further!</p>
-                <button ng-click = "openDialog()" class = "login" >Login</button>
-                <button class = "signUp" >Sign Up</button>
-            </div>
-
-            <div class="flex-item image">
-                <img src="globe.png" alt="GreenTrip Guru">
-            </div>
-
-        </div>
-        
     </div>
 
-    <div ng-controller="aboutTheApp">
-        <div class = "about">
-                <p class = "title">What is <span> GreenTrip Guru</span>?</p>
-                <p class="description">GreenTrip Guru is a web application that helps you plan your vacation in a sustainable way. It provides you with a list of eco-friendly hotels, restaurants, and activities in the city of your choice while also considering your priorities and reviews of previous vacations. You can also calculate the carbon footprint of your trip and find out how to offset it.</p>
-        </div>
-        <p class = "poweredBy">Powered by Jash Patel<p></p>
-    </div>
-    
-    <div ng-controller="footer">
-        <div class = "footer">
-            <p class = "footerText">© 2024 GreenTrip Guru. All rights reserved.</p>
-        </div>
+    <div class="flex-item image">
+      <img src="globe.png" alt="GreenTrip Guru">
     </div>
 
-</body>
-</html>
+  </div>
+</div>
+
+<div class="aboutTheApp">
+
+  <div class="about">
+    <p class="title">What is <span>GreenTrip Guru</span>?</p>
+    <p class="description">GreenTrip Guru is a web application that helps you plan your vacation in a sustainable way. It provides you with a list of eco-friendly hotels, restaurants, and activities in the city of your choice while also considering your priorities and reviews of previous vacations. You can also calculate the carbon footprint of your trip and find out how to offset it.</p>
+  </div>
+
+  <p class="poweredBy">Powered by Jash Patel</p>
+
+</div>
+
+<div class="footer">
+
+  <div class="copyright">
+    <p class="footerText">© 2024 GreenTrip Guru. All rights reserved.</p>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Login to <span>GreenTrip Guru</span></h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <input type="text" class="usernameBox" placeholder="Enter Username">
+        <input type="text" class="passwordBox" placeholder="Enter Password">
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
