@@ -93,3 +93,52 @@ span{
     color: rgb(238, 229, 229);
 }
 
+.input-container{
+    display: flex;
+    flex-direction: column;
+}
+.usernameBox{
+    margin-bottom: 1vh;
+}
+
+button.log{
+    background-color: rgb(34, 158, 117);
+}
+
+.input-flexbox{
+    display: flex;
+    flex-direction: column;
+}
+
+.modal.blurred-modal::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(0.5vh);
+    -webkit-backdrop-filter: blur(0.5vh);
+  }
+  
+  .modal.blurred-modal .modal-dialog {
+    z-index: 10;
+  }
+
+  .modal-dialog{
+    background-color: rgb(170, 219, 237);
+  }
+  
+  
+  .modal.blurred-modal .modal-content {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(1000px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  button.login-creds{
+    border-radius: 1.5vh;
+    background-color:rgb(34, 158, 117);
+    color: rgb(207, 238, 226);
+  }

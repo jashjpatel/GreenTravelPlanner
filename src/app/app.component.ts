@@ -11,10 +11,21 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   title = 'my-angular-app';
+  // variable that holds whether or not the modal is open
+  isModalOpen = false;
+
   openModal(){
     const modelDiv = document.getElementById('myModal');
     if(modelDiv != null){
       modelDiv.style.display = 'block';
+      this.isModalOpen = true;
+    }
+  }
+  closeModal(){
+    const modelDiv = document.getElementById('myModal');
+    if(modelDiv != null){
+      modelDiv.style.display = 'none';
+      this.isModalOpen = false;
     }
   }
 }

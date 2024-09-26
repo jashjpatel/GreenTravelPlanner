@@ -36,38 +36,30 @@
 
 </div>
 
-
-
-
-
-
-
-
-
-
 <!-- The Modal -->
-<div class="modal" id="myModal">
+<div class="modal blurred-modal" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
 
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Login to <span>GreenTrip Guru</span></h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click) = 'closeModal()'></button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
+        <div class = "input-flexbox">
         <input type="text" class="usernameBox" placeholder="Enter Username">
         <input type="text" class="passwordBox" placeholder="Enter Password">
+        </div>
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="login-creds" data-bs-dismiss="modal">Login</button>
       </div>
 
     </div>
   </div>
 </div>
-
