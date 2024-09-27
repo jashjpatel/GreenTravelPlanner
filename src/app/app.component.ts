@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
+import { Renderer2 } from '@angular/core';
 
 @Component({
   selector: "app-root",
@@ -14,11 +15,17 @@ export class AppComponent {
   // variable that holds whether or not the modal is open
   isModalOpen = false;
 
+  // instance of renderer2
+  constructor(private renderer: Renderer2){
+
+  }
+
   openModal(){
     const modelDiv = document.getElementById('myModal');
     if(modelDiv != null){
       modelDiv.style.display = 'block';
       this.isModalOpen = true;
+      this.renderer.addClass(document.body, 'model-open');
     }
   }
   closeModal(){
@@ -26,6 +33,7 @@ export class AppComponent {
     if(modelDiv != null){
       modelDiv.style.display = 'none';
       this.isModalOpen = false;
+      this.renderer.removeClass(document.body, 'model-open'); 
     }
   }
 }

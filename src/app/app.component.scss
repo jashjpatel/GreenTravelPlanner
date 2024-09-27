@@ -142,3 +142,7 @@ button.log{
     background-color:rgb(34, 158, 117);
     color: rgb(207, 238, 226);
   }
+
+  body.modal-open{
+    overflow: hidden;
+  }
