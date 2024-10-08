@@ -108,6 +108,7 @@ button.log{
 .input-flexbox{
     display: flex;
     flex-direction: column;
+    margin-bottom: 1vh;
 }
 
 .modal.blurred-modal::before {
@@ -146,3 +147,18 @@ button.log{
   body.modal-open{
     overflow: hidden;
   }
+
+  input.first-name{
+    margin-bottom: 1vh;
+  }
+
+  input.last-name{
+    margin-bottom: 1vh;
+  }
+
+  button.signin-creds{
+    border-radius: 1.5vh;
+    background-color:rgb(56, 140, 224);
+    color: rgb(207, 238, 226);
+  }
+  

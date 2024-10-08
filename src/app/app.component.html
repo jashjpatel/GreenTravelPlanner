@@ -5,8 +5,8 @@
       <p class="slogan">Planning a vacation has never been easier</p>
       <p class="followingText">Not sure where you want to go for your next vacation and what you want to do there? Look no further!</p>
 
-      <button class="login" (click) = 'openModal()'>Login</button>
-      <button class="signUp">Sign Up</button>
+      <button class="login" (click) = 'openLoginModal()'>Login</button>
+      <button class="signUp" (click) = 'openSigninModal()'>Sign Up</button>
 
     </div>
 
@@ -36,15 +36,15 @@
 
 </div>
 
-<!-- The Modal -->
-<div class="modal blurred-modal" id="myModal">
+<!-- Create login modal -->
+<div class="modal blurred-modal" id="loginModal">
   <div class="modal-dialog">
     <div class="modal-content">
 
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Login to <span>GreenTrip Guru</span></h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" (click) = 'closeModal()'></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click) = 'closeLoginModal()'></button>
       </div>
 
       <!-- Modal body -->
@@ -60,6 +60,42 @@
         <button type="button" class="login-creds" data-bs-dismiss="modal">Login</button>
       </div>
 
+    </div>
+  </div>
+</div>
+
+
+<!-- Create signin modal -->
+<div class="modal blurred-modal" id="signinModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Welcome to <span>GreenTrip Guru</span></h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click) = 'closeSigninModal()'></button>
+      </div>
+
+      <!-- Modal body -->
+      <!-- Tutorial Link: https://www.youtube.com/watch?v=raTXpt7bVVM&t=786s-->
+       <form (ngSubmit) = "OnSubmit()">
+      <div class="modal-body">
+        <div class = "input-flexbox">
+          <input [(ngModel)] = "currentUser.firstName" type="text"  class="first-name" placeholder="First Name" name = "first-name">
+          <input [(ngModel)] = "currentUser.lastName" type="text" class="last-name" placeholder="Last Name" name = "last-name">  
+          <input [(ngModel)] = "currentUser.username" type="text" class="usernameBox" placeholder="Enter Username" name = "username">
+          <input [(ngModel)] = "currentUser.password" type="text" class="passwordBox" placeholder="Enter Password" name = "password">
+          <input [(ngModel)] = "currentUser.email" type="text" class="email" placeholder="Enter Email" name = "email">
+        </div>
+        <input [(ngModel)] = "currentUser.isVerified" type="checkbox" id="verification" name="verification">
+        <label for="verfication" class = "verificationText">  I am not a robot</label>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="submit-signin-info" class="signin-creds" data-bs-dismiss="modal" required>Sign In</button>
+      </div>
+    </form>
     </div>
   </div>
 </div>
