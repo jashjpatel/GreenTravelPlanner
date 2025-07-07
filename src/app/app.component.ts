@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
 import { Renderer2 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 // declare the interface to store user data
 interface UserData{
   firstName: string;
@@ -42,9 +43,6 @@ export class AppComponent {
 
   }
 
-
-
-
   OnSubmit(){
     // save the values the user inputs into an array
     const newUser = {
@@ -56,6 +54,7 @@ export class AppComponent {
     if(newUser.isVerified == true){
       // print the data to console
       console.log(this.currentUser);
+      // make the http call here
       this.resetForm();
     }
   }
