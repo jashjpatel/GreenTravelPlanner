@@ -1,164 +1,313 @@
+// ===== VARIABLES =====
+$colors: (
+  primary-green: #229e75,
+  green-hover: #40b38c,
+  primary-blue: #0074d3,
+  blue-hover: #308bd4,
+  light-green-bg: #daeecc,
+  modal-bg: #aadbed,
+  text-dark: #000000,
+  text-light: #eee5e5,
+  text-modal: #cfee2,
+  accent-green: green,
+  modal-backdrop: rgba(0, 0, 0, 0.5),
+  modal-content: rgba(255, 255, 255, 0.8)
+);
+
+$typography: (
+  font-family: 'Arial', sans-serif,
+  weight-normal: 400,
+  weight-medium: 500,
+  weight-bold: 700,
+  weight-extra-bold: 900,
+  size-small: 1rem,
+  size-medium: 1.5rem,
+  size-large: 1.75rem,
+  size-xlarge: 4.5rem
+);
+
+$spacing: (
+  xs: 0.5rem,
+  sm: 1rem,
+  md: 1.5rem,
+  lg: 2rem,
+  xl: 5vh,
+  percentage-margin: 10%
+);
+
+$layout: (
+  border-radius: 1rem,
+  border-radius-large: 1.5vh,
+  blur-light: 0.5vh,
+  blur-heavy: 10px,
+  z-modal: 10
+);
+
+// ===== HELPER FUNCTIONS =====
+@function color($key) {
+  @return map-get($colors, $key);
+}
+
+@function typo($key) {
+  @return map-get($typography, $key);
+}
+
+@function space($key) {
+  @return map-get($spacing, $key);
+}
+
+@function layout($key) {
+  @return map-get($layout, $key);
+}
+
+// ===== MIXINS =====
+@mixin button-base {
+  text-align: center;
+  padding: space(xs) space(sm);
+  font-size: typo(size-medium);
+  font-family: typo(font-family);
+  border-radius: layout(border-radius);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: space(percentage-margin);
+}
+
+@mixin button-variant($bg-color, $hover-color, $text-color: color(text-light)) {
+  @include button-base;
+  background-color: $bg-color;
+  color: $text-color;
+  
+  &:hover {
+    background-color: $hover-color;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@mixin flex-container($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin text-style($size, $weight: typo(weight-normal), $family: typo(font-family)) {
+  font-size: $size;
+  font-weight: $weight;
+  font-family: $family;
+}
+
+@mixin modal-blur {
+  backdrop-filter: blur(layout(blur-light));
+  -webkit-backdrop-filter: blur(layout(blur-light));
+}
+
+// ===== BASE STYLES =====
+body {
+  margin: 0;
+  padding: 0;
+  font-family: typo(font-family);
+  
+  &.modal-open {
+    overflow: hidden;
+  }
+}
+
+// ===== HEADER SECTION =====
 .header {
-    background-color: #daeecc;
-    color: rgb(0, 0, 0);
+  background-color: color(light-green-bg);
+  color: color(text-dark);
+  text-align: center;
+  padding: space(sm);
+}
+
+// ===== TYPOGRAPHY =====
+p {
+  &.slogan {
+    @include text-style(typo(size-xlarge), typo(weight-bold));
+    margin: 0;
+  }
+  
+  &.poweredBy {
+    margin-top: space(xl);
+    @include text-style(typo(size-small), typo(weight-extra-bold));
     text-align: center;
-    padding: 1em;
+  }
+  
+  &.followingText {
+    @include text-style(typo(size-large), typo(weight-bold));
+  }
 }
 
-p.slogan{
-    font-size: 4.5em;
-    font-family: "Arial";
-    font-weight: bold;
+.title {
+  @include text-style(typo(size-medium));
 }
 
-p.poweredBy{
-    margin-top: 5vh;
-    font-size: 1em;
-    font-weight: 1500;
-    text-align: center;
+.about {
+  color: color(text-dark);
+  text-align: center;
+  padding: space(sm);
+  @include text-style(typo(size-medium));
 }
 
-p.followingText{
-    font-size: 1.75em;
-    font-weight: bold;
-    font-family: "Arial";
+span {
+  color: color(accent-green);
+  font-weight: typo(weight-bold);
 }
 
-.title{
-    font-size: 1.5em;
+// ===== LAYOUT =====
+.image {
+  max-width: 5%;
+  height: auto;
 }
 
-.about{
-    color: rgb(0, 0, 0);
-    text-align: center;
-    padding: 1em;
-    font-size: 1.5em;
-    font-family: "Arial";
-}
-span{
-    color: green;
-    font-weight: bold;
-}
-
-.image{
-        max-width: 5%;
-}
-
-.flexbox{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 75vh;
+.flexbox {
+  @include flex-container(row, space-between, center);
+  height: 75vh;
+  gap: space(sm);
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+    padding: space(sm);
+  }
 }
 
 .flex-item {
-    flex: 1; /* Allow items to grow and shrink */
-    max-width: 150vh; /* Maximum width for each item */
-    min-width: 50vh; /* Minimum width for each item (optional) */
-    padding: 20px; /* Padding inside items */
-    box-sizing: border-box; /* Ensure padding and border are included in width */
-    text-align: center; /* Center text inside items */
+  flex: 1;
+  max-width: 150vh;
+  min-width: 50vh;
+  padding: space(lg);
+  box-sizing: border-box;
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    min-width: auto;
+    max-width: 100%;
+    padding: space(sm);
+  }
 }
 
-.login{
-    background-color: #daeecc;
-    color: rgb(238, 229, 229);
-    text-align: center;
-    padding: 0.5em;
-    font-size: 1.5em;
-    font-family: "Arial";
-    border-radius: 1em;
-    background-color: rgb(34, 158, 117);
-    margin-right: 10%;
+// ===== BUTTONS =====
+.login {
+  @include button-variant(color(primary-green), color(green-hover));
 }
 
-.signUp{
-    color: rgb(238, 229, 229);
-    text-align: center;
-    padding: 0.5em;
-    font-size: 1.5em;
-    font-family: "Arial";
-    border-radius: 1em;
-    background-color: rgb(0, 116, 211);
-    margin-right: 10%;
+.signUp {
+  @include button-variant(color(primary-blue), color(blue-hover));
 }
 
-.login:hover{
-    background-color: rgb(64, 179, 140);
-    color: rgb(238, 229, 229);
-}
-
-.signUp:hover{
-    background-color: rgb(48, 139, 212);
-    color: rgb(238, 229, 229);
-}
-
-.input-container{
-    display: flex;
-    flex-direction: column;
-}
-.usernameBox{
-    margin-bottom: 1vh;
-}
-
-button.log{
-    background-color: rgb(34, 158, 117);
-}
-
-.input-flexbox{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1vh;
-}
-
-.modal.blurred-modal::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(0.5vh);
-    -webkit-backdrop-filter: blur(0.5vh);
+button {
+  &.log {
+    background-color: color(primary-green);
   }
   
-  .modal.blurred-modal .modal-dialog {
-    z-index: 10;
-  }
-
-  .modal-dialog{
-    background-color: rgb(170, 219, 237);
+  &.login-creds {
+    @include button-variant(color(primary-green), color(green-hover), color(text-modal));
+    border-radius: layout(border-radius-large);
+    margin-right: 0;
   }
   
+  &.signin-creds {
+    @include button-variant(color(blue-hover), color(primary-blue), color(text-modal));
+    border-radius: layout(border-radius-large);
+    margin-right: 0;
+  }
+}
+
+// ===== FORM ELEMENTS =====
+.input-container,
+.input-flexbox {
+  @include flex-container(column, flex-start, stretch);
+  gap: space(xs);
+}
+
+.input-flexbox {
+  margin-bottom: 1vh;
+}
+
+input {
+  padding: space(xs);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: typo(size-small);
   
-  .modal.blurred-modal .modal-content {
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(1000px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-
-  button.login-creds{
-    border-radius: 1.5vh;
-    background-color:rgb(34, 158, 117);
-    color: rgb(207, 238, 226);
-  }
-
-  body.modal-open{
-    overflow: hidden;
-  }
-
-  input.first-name{
+  &.first-name,
+  &.last-name,
+  &.usernameBox {
     margin-bottom: 1vh;
   }
-
-  input.last-name{
-    margin-bottom: 1vh;
+  
+  &:focus {
+    outline: none;
+    border-color: color(primary-green);
+    box-shadow: 0 0 0 2px rgba(34, 158, 117, 0.2);
   }
+}
 
-  button.signin-creds{
-    border-radius: 1.5vh;
-    background-color:rgb(56, 140, 224);
-    color: rgb(207, 238, 226);
+// ===== MODAL STYLES =====
+.modal {
+  &.blurred-modal {
+    &::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: color(modal-backdrop);
+      @include modal-blur;
+      z-index: layout(z-modal) - 1;
+    }
+    
+    .modal-dialog {
+      z-index: layout(z-modal);
+      background-color: color(modal-bg);
+      border-radius: layout(border-radius);
+      overflow: hidden;
+    }
+    
+    .modal-content {
+      background-color: color(modal-content);
+      backdrop-filter: blur(layout(blur-heavy));
+      -webkit-backdrop-filter: blur(layout(blur-heavy));
+      border: none;
+      padding: space(lg);
+    }
+  }
+}
+
+// ===== RESPONSIVE DESIGN =====
+@media (max-width: 768px) {
+  p.slogan {
+    font-size: 2.5rem;
   }
   
+  .flex-item {
+    min-width: auto;
+    padding: space(sm);
+  }
+  
+  .login,
+  .signUp {
+    margin-right: 0;
+    margin-bottom: space(sm);
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: space(xs);
+  }
+  
+  p.slogan {
+    font-size: 2rem;
+  }
+  
+  .about {
+    font-size: 1.2rem;
+    padding: space(xs);
+  }
+}
