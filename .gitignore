@@ -75,3 +75,7 @@ Thumbs.db
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# dont wanna overload changes to github hehehe
+**/.angular/cache/
+
