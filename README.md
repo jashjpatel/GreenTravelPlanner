@@ -1,4 +1,4 @@
-# MyAngularApp
+# Frontend: MyAngularApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
 
@@ -25,3 +25,34 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+# Backend: Ruby on rails server side app
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+the later the better (i use ruby-3.3.4)
+
+* System dependencies
+whatevers in the gem file... run bundle install
+
+* Configuration
+
+* Database creation
+nothing yet... looking to use mongodb
+
+* Database initialization
+working on it
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+working on deployment
+
+* ...
