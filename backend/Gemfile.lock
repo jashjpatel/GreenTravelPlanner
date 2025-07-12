@@ -73,8 +73,6 @@ GEM
       tzinfo (~> 2.0, >= 2.0.5)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
-    airbrussh (1.5.3)
-      sshkit (>= 1.6.1, != 1.7.0)
     ast (2.4.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
@@ -83,27 +81,8 @@ GEM
       msgpack (~> 1.2)
     brakeman (7.0.0)
       racc
+    bson (5.1.1)
     builder (3.3.0)
-    capistrano (3.19.2)
-      airbrussh (>= 1.0.0)
-      i18n
-      rake (>= 10.0.0)
-      sshkit (>= 1.9.0)
-    capistrano-bundler (2.1.1)
-      capistrano (~> 3.1)
-    capistrano-rails (1.6.3)
-      capistrano (~> 3.1)
-      capistrano-bundler (>= 1.1, < 3)
-    capistrano-rbenv (2.2.0)
-      capistrano (~> 3.1)
-      sshkit (~> 1.3)
-    capistrano-rvm (0.1.2)
-      capistrano (~> 3.0)
-      sshkit (~> 1.2)
-    capistrano3-puma (6.0.0.beta.1)
-      capistrano (~> 3.7)
-      capistrano-bundler
-      puma (>= 5.1, < 7.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -120,25 +99,7 @@ GEM
     debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
-    devise (4.9.4)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
-    devise-jwt (0.12.1)
-      devise (~> 4.0)
-      warden-jwt_auth (~> 0.10)
     drb (2.2.1)
-    dry-auto_inject (1.0.1)
-      dry-core (~> 1.0)
-      zeitwerk (~> 2.6)
-    dry-configurable (1.2.0)
-      dry-core (~> 1.0, < 2)
-      zeitwerk (~> 2.6)
-    dry-core (1.0.1)
-      concurrent-ruby (~> 1.0)
-      zeitwerk (~> 2.6)
     erubi (1.13.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -169,6 +130,14 @@ GEM
     matrix (0.4.2)
     mini_mime (1.1.5)
     minitest (5.25.1)
+    mongo (2.21.1)
+      base64
+      bson (>= 4.14.1, < 6.0.0)
+    mongoid (8.1.10)
+      activemodel (>= 5.1, < 8.1, != 7.0.0)
+      concurrent-ruby (>= 1.0.5, < 2.0)
+      mongo (>= 2.18.0, < 3.0.0)
+      ruby2_keywords (~> 0.0.5)
     msgpack (1.7.2)
     net-imap (0.4.17)
       date
@@ -177,13 +146,8 @@ GEM
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-scp (4.0.0)
-      net-ssh (>= 2.6.5, < 8.0.0)
-    net-sftp (4.0.0)
-      net-ssh (>= 5.0.0, < 8.0.0)
     net-smtp (0.5.0)
       net-protocol
-    net-ssh (7.3.0)
     nio4r (2.7.3)
     nokogiri (1.16.7-aarch64-linux)
       racc (~> 1.4)
@@ -197,8 +161,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
-    orm_adapter (0.5.0)
-    ostruct (0.6.1)
     parallel (1.26.3)
     parser (3.3.5.0)
       ast (~> 2.4.1)
@@ -255,9 +217,6 @@ GEM
     regexp_parser (2.9.2)
     reline (0.5.10)
       io-console (~> 0.5)
-    responders (3.1.1)
-      actionpack (>= 5.2)
-      railties (>= 5.2)
     rexml (3.3.8)
     rubocop (1.66.1)
       json (~> 2.3)
@@ -288,6 +247,7 @@ GEM
       rubocop-performance
       rubocop-rails
     ruby-progressbar (1.13.0)
+    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     securerandom (0.3.1)
     selenium-webdriver (4.25.0)
@@ -296,22 +256,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sqlite3 (2.1.0-aarch64-linux-gnu)
-    sqlite3 (2.1.0-aarch64-linux-musl)
-    sqlite3 (2.1.0-arm-linux-gnu)
-    sqlite3 (2.1.0-arm-linux-musl)
-    sqlite3 (2.1.0-arm64-darwin)
-    sqlite3 (2.1.0-x86-linux-gnu)
-    sqlite3 (2.1.0-x86-linux-musl)
-    sqlite3 (2.1.0-x86_64-darwin)
-    sqlite3 (2.1.0-x86_64-linux-gnu)
-    sqlite3 (2.1.0-x86_64-linux-musl)
-    sshkit (1.23.2)
-      base64
-      net-scp (>= 1.1.2)
-      net-sftp (>= 2.1.2)
-      net-ssh (>= 2.8.0)
-      ostruct
     stringio (3.1.1)
     thor (1.3.2)
     timeout (0.4.1)
@@ -319,13 +263,6 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.6.0)
     useragent (0.16.10)
-    warden (1.2.9)
-      rack (>= 2.0.9)
-    warden-jwt_auth (0.10.0)
-      dry-auto_inject (>= 0.8, < 2)
-      dry-configurable (>= 0.13, < 2)
-      jwt (~> 2.1)
-      warden (~> 1.2)
     webrick (1.8.2)
     websocket (1.2.11)
     websocket-driver (0.7.6)
@@ -352,25 +289,19 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap
   brakeman (~> 7.0.0)
-  capistrano (~> 3.19)
-  capistrano-bundler
-  capistrano-rails (~> 1.6)
-  capistrano-rbenv (~> 2.2)
-  capistrano-rvm
-  capistrano3-puma (= 6.0.0.beta.1)
   capybara
   debug
-  devise
-  devise-jwt
   importmap-rails
+  jwt
+  mongoid (~> 8.0)
   puma (~> 6.4.3)
   rack-cors
   rails (~> 7.2.1)
   rubocop-rails-omakase
   selenium-webdriver
-  sqlite3 (>= 1.4)
   tzinfo-data
 
 BUNDLED WITH

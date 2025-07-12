@@ -1,6 +1,11 @@
 require_relative "boot"
 
-require "rails/all"
+require "action_controller/railtie"
+require "action_view/railtie"
+require "action_mailer/railtie"
+require "active_job/railtie"
+require "action_cable/engine"
+require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -32,6 +37,11 @@ module GreenRailsBackend
     config.session_store :cookie_store, key: "_interslice_session"
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use config.session_store, config.session_options
-    config.active_record.schema_format = :ruby
+    #config.active_record.schema_format = :ruby
+
+    config.generators do |g|
+      g.orm :mongoid
+    end
+    
   end
 end

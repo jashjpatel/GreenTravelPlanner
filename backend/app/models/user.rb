@@ -1,20 +1,9 @@
 class User < ApplicationRecord
-  include Devise::JWT::RevocationStrategies::JTIMatcher
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :jwt_authenticatable, jwt_revocation_strategy: self
+    # enables password authentication using password_digest
+    has_secure_password
 
-  before_create :add_jti
-
-  private
-
-  def add_jti
-    self.jti ||= SecureRandom.uuid
-  end
-
-  def jwt_payload
-    super
-  end
+    # validations
+    validates :email, presence: true, uniqueness: true
+    validates :username, presence: true, uniqueness: true
+    # more validations here...
 end
