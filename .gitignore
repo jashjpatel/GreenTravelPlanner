@@ -79,5 +79,6 @@ Thumbs.db
 # dont wanna overload changes to github hehehe
 **/.angular/cache/
 
-/backend/.env 
+**/.env
+
 
