@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  # Health check for ELB - returns 200 OK
   get '/health', to: proc { [200, {}, ['OK']] }
+  root to: proc { [200, {}, ['Green Travel Planner API is running!']] }
   
   # requests to /api are proxied here 
   scope '/api' do
