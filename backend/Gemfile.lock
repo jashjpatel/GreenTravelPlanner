@@ -7,13 +7,6 @@ GEM
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
       zeitwerk (~> 2.6)
-    actionmailbox (7.2.1.1)
-      actionpack (= 7.2.1.1)
-      activejob (= 7.2.1.1)
-      activerecord (= 7.2.1.1)
-      activestorage (= 7.2.1.1)
-      activesupport (= 7.2.1.1)
-      mail (>= 2.8.0)
     actionmailer (7.2.1.1)
       actionpack (= 7.2.1.1)
       actionview (= 7.2.1.1)
@@ -32,13 +25,6 @@ GEM
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
       useragent (~> 0.16)
-    actiontext (7.2.1.1)
-      actionpack (= 7.2.1.1)
-      activerecord (= 7.2.1.1)
-      activestorage (= 7.2.1.1)
-      activesupport (= 7.2.1.1)
-      globalid (>= 0.6.0)
-      nokogiri (>= 1.8.5)
     actionview (7.2.1.1)
       activesupport (= 7.2.1.1)
       builder (~> 3.1)
@@ -50,18 +36,6 @@ GEM
       globalid (>= 0.3.6)
     activemodel (7.2.1.1)
       activesupport (= 7.2.1.1)
-    activerecord (7.2.1.1)
-      activemodel (= 7.2.1.1)
-      activesupport (= 7.2.1.1)
-      timeout (>= 0.4.0)
-    activerecord-nulldb-adapter (1.1.1)
-      activerecord (>= 6.0, < 8.1)
-    activestorage (7.2.1.1)
-      actionpack (= 7.2.1.1)
-      activejob (= 7.2.1.1)
-      activerecord (= 7.2.1.1)
-      activesupport (= 7.2.1.1)
-      marcel (~> 1.0)
     activesupport (7.2.1.1)
       base64
       bigdecimal
@@ -80,8 +54,6 @@ GEM
     bcrypt (3.1.20)
     benchmark (0.4.1)
     bigdecimal (3.1.8)
-    bootsnap (1.18.4)
-      msgpack (~> 1.2)
     brakeman (7.0.0)
       racc
     bson (5.1.1)
@@ -133,7 +105,6 @@ GEM
       net-imap
       net-pop
       net-smtp
-    marcel (1.0.4)
     matrix (0.4.2)
     mini_mime (1.1.5)
     minitest (5.25.1)
@@ -145,7 +116,6 @@ GEM
       concurrent-ruby (>= 1.0.5, < 2.0)
       mongo (>= 2.18.0, < 3.0.0)
       ruby2_keywords (~> 0.0.5)
-    msgpack (1.7.2)
     net-imap (0.4.17)
       date
       net-protocol
@@ -284,18 +254,13 @@ PLATFORMS
 
 DEPENDENCIES
   actioncable (~> 7.2.1)
-  actionmailbox (~> 7.2.1)
   actionmailer (~> 7.2.1)
   actionpack (~> 7.2.1)
-  actiontext (~> 7.2.1)
   actionview (~> 7.2.1)
   activejob (~> 7.2.1)
-  activerecord-nulldb-adapter
-  activestorage (~> 7.2.1)
   activesupport (~> 7.2.1)
   bcrypt (~> 3.1.7)
   benchmark
-  bootsnap (>= 1.4.4)
   brakeman (~> 7.0.0)
   capybara
   debug
@@ -307,7 +272,6 @@ DEPENDENCIES
   ostruct
   puma (~> 6.4.3)
   rack-cors
-  railties (~> 7.2.1)
   rubocop-rails-omakase
   selenium-webdriver
   tzinfo-data
