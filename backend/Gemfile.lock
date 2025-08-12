@@ -295,7 +295,7 @@ DEPENDENCIES
   activesupport (~> 7.2.1)
   bcrypt (~> 3.1.7)
   benchmark
-  bootsnap
+  bootsnap (>= 1.4.4)
   brakeman (~> 7.0.0)
   capybara
   debug
