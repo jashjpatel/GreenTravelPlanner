@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: green-rails-travel-planner
+    env: ruby
+    repo: https://github.com/yourusername/your-repo-name
+    buildCommand: bundle install
+    startCommand: bundle exec rails server -p $PORT
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: RACK_ENV
+        value: production
