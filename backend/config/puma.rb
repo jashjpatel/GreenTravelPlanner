@@ -1,34 +1,49 @@
-# This configuration file will be evaluated by Puma. The top-level methods that
-# are invoked here are part of Puma's configuration DSL. For more information
-# about methods provided by the DSL, see https://puma.io/puma/Puma/DSL.html.
+# Puma configuration file for Elastic Beanstalk
+max_threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
+min_threads_count = ENV.fetch("RAILS_MIN_THREADS") { max_threads_count }
+threads min_threads_count, max_threads_count
 
-# Puma starts a configurable number of processes (workers) and each process
-# serves each request in a thread from an internal thread pool.
-#
-# The ideal number of threads per worker depends both on how much time the
-# application spends waiting for IO operations and on how much you wish to
-# to prioritize throughput over latency.
-#
-# As a rule of thumb, increasing the number of threads will increase how much
-# traffic a given process can handle (throughput), but due to CRuby's
-# Global VM Lock (GVL) it has diminishing returns and will degrade the
-# response time (latency) of the application.
-#
-# The default is set to 3 threads as it's deemed a decent compromise between
-# throughput and latency for the average Rails application.
-#
-# Any libraries that use a connection pool or another resource pool should
-# be configured to provide at least as many connections as the number of
-# threads. This includes Active Record's `pool` parameter in `database.yml`.
-threads_count = ENV.fetch("RAILS_MAX_THREADS", 3)
-threads threads_count, threads_count
+# Workers
+worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 
-# Specifies the `port` that Puma will listen on to receive requests; default is 3000.
-port ENV.fetch("PORT", 3000)
+# Port - this is important for EB
+port ENV.fetch("PORT") { 3000 }
 
-# Allow puma to be restarted by `bin/rails restart` command.
+# Environment
+environment ENV.fetch("RAILS_ENV") { "development" }
+
+# Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
 
-# Specify the PID file. Defaults to tmp/pids/server.pid in development.
-# In other environments, only set the PID file if requested.
-pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
+# Specify the PID file
+pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
+
+# Only bind to socket in production if PORT is not set
+if ENV.fetch("RAILS_ENV") { "development" } == "production" && !ENV["PORT"]
+  bind "unix:///var/run/puma/my_app.sock"
+  
+  before_fork do
+    require 'fileutils'
+    FileUtils.mkdir_p("/var/run/puma")
+    FileUtils.chmod(0755, "/var/run/puma")
+  end
+  
+  daemonize true
+  pidfile "/var/app/current/tmp/pids/puma.pid"
+  state_path "/var/app/current/tmp/pids/puma.state"
+  stdout_redirect "/var/app/current/log/puma.stdout.log", "/var/app/current/log/puma.stderr.log", true
+end
+
+# Development SSL settings (only if certs exist)
+if ENV.fetch("RAILS_ENV") { "development" } == "development" 
+  if File.exist?('config/certs/server.key') && File.exist?('config/certs/server.crt')
+    ssl_bind '0.0.0.0', '3001', {
+      key: 'config/certs/server.key',
+      cert: 'config/certs/server.crt',
+      verify_mode: 'none'
+    }
+  end
+end
+
+# Preload the application
+preload_app!

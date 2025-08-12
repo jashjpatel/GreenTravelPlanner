@@ -1,17 +1,22 @@
 require_relative "boot"
 
-require "action_controller/railtie"
-require "action_view/railtie"
-require "action_mailer/railtie"
+require "rails"
+require "active_model/railtie"
 require "active_job/railtie"
+# require "active_record/railtie"  # Comment this out
+require "active_storage/engine"
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "action_view/railtie"
 require "action_cable/engine"
 require "rails/test_unit/railtie"
+# DO NOT require 'active_record/railtie' for MongoDB apps
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module GreenRailsBackend
+module GreenRailsTravelPlanner
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.2
@@ -37,11 +42,13 @@ module GreenRailsBackend
     config.session_store :cookie_store, key: "_interslice_session"
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use config.session_store, config.session_options
-    #config.active_record.schema_format = :ruby
 
+    # Use Mongoid for ORM
     config.generators do |g|
       g.orm :mongoid
     end
     
+    # Disable ActiveRecord completely
+    config.generators.system_tests = nil
   end
 end

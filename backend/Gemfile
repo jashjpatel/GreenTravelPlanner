@@ -1,13 +1,24 @@
 source "https://rubygems.org"
-
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2.1"
+gem "railties", "~> 7.2.1"
+gem "actionpack", "~> 7.2.1"
+gem "actionview", "~> 7.2.1"
+gem "activesupport", "~> 7.2.1"
+gem "actionmailer", "~> 7.2.1"
+gem "activejob", "~> 7.2.1"
+gem "actioncable", "~> 7.2.1"
+gem "activestorage", "~> 7.2.1"
+gem "actionmailbox", "~> 7.2.1"
+gem "actiontext", "~> 7.2.1"
+ruby "3.3.9"
+gem 'activerecord-nulldb-adapter'
 # Use sqlite3 as the database for Active Record
 #gem "sqlite3", ">= 1.4"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 6.4.3"
 
 gem "mongoid", "~> 8.0"
+gem "mongo", "~> 2.18"
 #jwt gem
 gem "jwt"
 
@@ -50,4 +61,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   gem "dotenv-rails", groups: [:development, :test]
+
+  gem "benchmark", require: false
+  gem "ostruct", require: false
 end

@@ -34201,3 +34201,32 @@ MONGODB | Server description for ac-qo9gous-shard-00-01.l0zxhsz.mongodb.net:2701
 MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
 MONGODB | Server description for ac-qo9gous-shard-00-01.l0zxhsz.mongodb.net:27017 changed from 'primary' to 'primary'.
 MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+[dotenv] Set [36mMONGODB_URI[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mMONGODB_URI[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mMONGODB_URI[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mMONGODB_URI[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mMONGODB_URI[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mMONGODB_URI[0m
+[dotenv] Loaded [33m.env[0m
+Started GET "/" for 127.0.0.1 at 2025-08-11 17:19:03 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/jash/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/gems/railties-7.2.1.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/jash/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/gems/railties-7.2.1.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 16ms (Views: 8.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | MongoDB: 0.0ms | GC: 0.0ms)
+
+
+Started GET "/icon.png" for 127.0.0.1 at 2025-08-11 17:19:03 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/icon.png"):
+  
+Started GET "/icon.png" for 127.0.0.1 at 2025-08-11 17:19:03 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/icon.png"):
+  
+[dotenv] Set [36mMONGODB_URI[0m
+[dotenv] Loaded [33m.env[0m
