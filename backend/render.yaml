@@ -2,9 +2,9 @@ services:
   - type: web
     name: green-rails-travel-planner
     env: ruby
-    repo: https://github.com/yourusername/your-repo-name
-    buildCommand: bundle install
-    startCommand: bundle exec rails server -p $PORT
+    repo: https://github.com/jashjpatel/GreenTravelPlanner
+    buildCommand: bundle config set --local deployment true && bundle install --without development test
+    startCommand: bundle exec rails server -b 0.0.0.0 -p $PORT
     envVars:
       - key: RAILS_ENV
         value: production
