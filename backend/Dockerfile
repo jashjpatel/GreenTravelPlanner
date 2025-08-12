@@ -34,9 +34,6 @@ RUN bundle install && \
 # Copy application code
 COPY . .
 
-# Precompile assets instead of bootsnap
-RUN bundle exec rails assets:precompile
-
 # Final stage for app image
 FROM base
 
