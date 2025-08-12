@@ -10,3 +10,5 @@ services:
         value: production
       - key: RACK_ENV
         value: production
+      - key: DISABLE_DATABASE_ENVIRONMENT_CHECK
+        value: "1"
