@@ -1,8 +1,20 @@
 development:
-  # Configure available database clients. (required)
   clients:
-    # Defines the default client. (required)
     default:
-      # Mongoid can connect to a URI accepted by the driver:
-       uri: <%= ENV['MONGODB_URI'] %>
-      
+      uri: <%= ENV['MONGODB_URI'] %>
+      options:
+        server_selection_timeout: 5
+
+test:
+  clients:
+    default:
+      uri: <%= ENV['MONGODB_URI'] %>
+      options:
+        server_selection_timeout: 5
+
+production:
+  clients:
+    default:
+      uri: <%= ENV['MONGODB_URI'] %>
+      options:
+        server_selection_timeout: 5
